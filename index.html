@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color:rgba(235, 235, 235, 0.895);
+        }
+        nav{
+            width:100vw;
+            height:100px;
+            background-color: white;
+            box-shadow: 0 0 20px grey;
+            padding:6px;
+            display: flex;
+            justify-content: space-around;
+            position:fixed;
+            top:0;
+            left:0;
+            z-index: 10;
+        }
+        .input-group{
+            width:420px;
+            height:75px;
+            margin: 8px;
+        }
+        .input-group-text{
+            font-size: 30px;
+            background-color: rgb(210, 230, 237);
+        }
+        .form-control{
+            font-size: 30px;
+            background-color: rgb(210, 230, 237);
+        }
+        .icon{
+            margin:0 25px;
+            color: rgb(117, 117, 117);
+            cursor: pointer;
+        }
+        .icon:hover{
+            color: black;
+            border-bottom: 4px solid black;
+        }
+        .right{
+            margin-bottom: -10px ;
+        }
+        .me{
+            height:46px;
+            width:46px;
+            border-radius: 50%;
+        }
+        .last{
+            padding-right: 40px;
+            border-right: 2px solid rgb(145, 145, 145);
+        }
+        .grid{
+            width:auto;
+            font-size: 45px;
+            color: rgb(117, 117, 117);
+            margin-left: 0px;
+            margin-right: 2px;
+        }
+        .dotss{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .section-1{
+            padding:20px;
+            margin-top:100px;
+            width:100vw;
+            min-height:100vh;
+            position: relative;
+            z-index:5;
+            margin-bottom: 20px;
+        }
+        .left-1{
+            width:19vw;
+            height:300vh;
+        }
+        .middle-1{
+            width:55vw;
+            height:300vh;
+            margin: 0 15px;
+        }
+        .right-1{
+            width:19vw;
+            height:300vh; 
+        }
+        .leftone{
+            width:100%;
+            height:360px;
+            background-color: white;
+            border-radius: 15px;  
+            border: 1px solid rgb(108, 108, 108);
+            margin:20px 0;
+        }
+        .lefttwo{
+            width:100%;
+            height:130px;
+            background-color: white;
+            border-radius: 15px;  
+            border: 1px solid rgb(108, 108, 108);
+            margin:20px 0;
+            padding:20px;
+            font-size: 22px;
+            font-weight: bolder;
+        }
+        .leftthree{
+            width:100%;
+            height:110px;
+            background-color: white;
+            border-radius: 15px;  
+            border: 1px solid rgb(108, 108, 108);
+            margin:20px 0;
+            padding: 20px;
+        }
+        .leftfour{
+            width:100%;
+            height:230px;
+            background-color: white;
+            border-radius: 15px;  
+            border: 1px solid rgb(108, 108, 108);
+            margin:20px 0;
+            padding: 20px;
+        }
+        .middleone{
+            width:100%;
+            height:200px;
+            background-color: white;
+            border-radius: 15px;  
+            border: 1px solid rgb(108, 108, 108);
+            margin:20px 0;
+            padding:20px;
+        }
+        .middletwo{
+            width:100%;
+            height:830px;
+            background-color: white;
+            border-radius: 15px;  
+            border: 1px solid rgb(108, 108, 108);
+            margin:20px 0;
+            padding-top: 10px;
+        }
+        .middlethree{
+            width:100%;
+            height:830px;
+            background-color: white;
+            border-radius: 15px;  
+            border: 1px solid rgb(108, 108, 108);
+            margin:20px 0;
+            padding-top: 10px;
+        }
+        .middlefour{
+            width:100%;
+            height:130px;
+            background-color: transparent;
+        }
+        .rightone{
+            width:100%;
+            height:990px;
+            background-color: white;
+            border-radius: 15px;  
+            border: 1px solid rgb(108, 108, 108);
+            margin:20px 0;
+            padding: 20px;
+        }
+        .righttwo{
+            width:100%;
+            height:370px;
+            background-color: white;
+            border-radius: 15px;  
+            border: 1px solid rgb(108, 108, 108);
+            margin:20px 0;
+        }
+        .righttwo1{
+            position: sticky;
+            top:120px;
+        }
+        .rightthree{
+            width:100%;
+            height:70px;
+            background-color: white;
+            border-radius: 15px;  
+            border: 1px solid rgb(108, 108, 108);
+            margin:20px 0;
+            padding: 20px;
+        }
+        .card1{
+            width:100%;
+            border-top-left-radius: 15px; 
+            border-top-right-radius: 15px;
+        }
+        .circle{
+            border-radius: 50%;
+            width:100px;
+            position: relative;
+            bottom:30px;
+            left:40px;
+            border: 3px solid white;
+        }
+        .name{
+           position:relative;
+           left:20px;
+           bottom:35px;
+        }
+        .leftone p{
+            margin:0px;
+            font-size: 20px;
+            position:relative;
+            left:20px;
+            bottom:35px;
+        }
+        .place{
+            margin-bottom:-200px;
+        }
+        .study{
+            display: flex;
+            font-size: 24px;
+            margin-top:8px;
+            font-weight: bold;
+        }
+        .side1{
+            margin-right: 135px;
+        }
+        .side2{
+            margin-right: 95px;
+        }
+        .t1{
+            font-size: 20px;
+            color: grey;
+        }
+        .t2{
+            display: flex;
+            align-items:flex-start;
+            gap:5px;
+            font-weight: bolder;
+        }
+        .f{
+            font-size: 23px;
+            font-weight: bolder;
+            gap:20px;
+            margin:10px;
+        }
+        .ic1{
+            font-size: 30px;
+        }
+        .r1{
+            gap:100px;
+        }
+        .list{
+            list-style-type: none;
+            padding: 0;
+        }
+        .list li {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+        .list span{
+            color: gray;
+            font-size: 19px;
+        }
+        .puzzle{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: white;
+        }
+        .puzzle:hover{
+            background-color: rgb(176, 176, 176);
+        }
+        .puzzle img{
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .info{
+            flex-grow: 1;
+        }
+        .arrow {
+            font-size: 65px;
+            color: grey;
+        }
+        .back{
+            width:100%;
+            height:75px;
+            border-top-left-radius: 15px; 
+            border-top-right-radius: 15px;
+        }
+        .square{
+            width:100px;
+            position: relative;
+            bottom:60px;
+            left:20px;
+            border: 3px solid white;
+        }
+        .rt1 {
+            margin-left: 20px;
+            position: relative;
+            bottom: 50px; 
+        }
+        .rt2 {
+            margin-left: 20px;
+            position: relative;
+            bottom: 45px; 
+            font-size: 22px;
+        }
+        .rt3 {
+            margin-left: 20px;
+            position: relative;
+            bottom: 50px;
+            font-size: 20px;
+        }
+        .button{
+            position: relative;
+            bottom: 50px;
+            width:300px;
+            padding:10px;
+            border-radius: 30px;
+            background-color: white;
+            border: 1px solid rgb(4, 154, 219);
+            color:rgb(4, 154, 219);
+            margin-left: 40px;
+            font-size: 20px;
+            font-weight: bolder;
+        }
+        .button:hover{
+            background-color: rgba(203, 203, 203, 0.804);
+        }
+        .m1{
+            margin-bottom: 20px;
+        }
+        .me1{
+            height:90px;
+            border-radius: 50%;
+        }
+        .btn1{
+            width:850px;
+            border-radius: 40px;
+            padding:18px;
+            font-size: 34px;
+            text-align: start;
+            margin-left: 35px;
+            background-color: rgb(231, 231, 231);
+            border: 1.5px solid grey;
+        }
+        .opt{
+            display:flex;
+            justify-content: space-evenly;
+            align-items:center;
+            font-size: 30px;
+            gap:210px;
+        }
+        .heading{
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            margin-left: 10px;
+        }
+        .profile{
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+        .user-info h3{
+            margin: 0;
+            font-size: 22px;
+        }
+        .user-info p {
+            margin: 0;
+            font-size: 18px;
+            color: grey;
+        }
+        .post-content p {
+            margin: 5px 0;
+            font-size: 20px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .icons{
+            font-size: 25px;
+            margin-left: 250px;
+        }
+        .postimg{
+            padding: 0;
+            width: 100%;
+            height:500px;
+            margin-bottom: 10px;
+        }
+        .likes{
+            margin-left: 10px;
+            margin-right: 10px;
+            font-size: 20px;
+            color: grey;
+            padding-left: 10px;
+            border-bottom: 1px solid grey;
+        }
+        .likes img{
+            height: 30px;
+        }
+        .like{
+            margin-right: 730px;
+        }
+        .actions{
+            margin-left: 20px;
+            padding: 10px;
+            font-size: 22px;
+            gap:200px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="left d-flex justify-content-center align-items-center">
+            <img src="logo.png" height="75px" alt="">
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
+                <input type="text" class="form-control" placeholder="Search" aria-label="Username" aria-describedby="basic-addon1">
+            </div>            
+        </div>
+        <div class="right d-flex justify-content-center align-items-center">
+            <div class="icon d-flex flex-column justify-content-center align-items-center">
+                <i class="fa-solid fa-house fs-1"></i>
+                <p style="font-size: 22px;">Home</p>
+            </div>
+            <div class="icon d-flex flex-column justify-content-center align-items-center">
+                <i class="fa-solid fa-user-group fs-1"></i>
+                <p style="font-size: 22px;">My Network</p>
+            </div>
+            <div class="icon d-flex flex-column justify-content-center align-items-center">
+                <i class="fa-solid fa-briefcase fs-1"></i>
+                <p style="font-size: 22px;">Jobs</p>
+            </div>
+            <div class="icon d-flex flex-column justify-content-center align-items-center">
+                <i class="fa-solid fa-comment fs-1"></i>
+                <p style="font-size: 22px;">Messaging</p>
+            </div>
+            <div class="icon d-flex flex-column justify-content-center align-items-center">
+                <i class="fa-solid fa-bell fs-1"></i>
+                <p style="font-size: 22px;">Notifications</p>
+            </div>
+            <div class="icon last d-flex flex-column justify-content-center align-items-center ">
+                <img src="me.jpeg" class="me"alt="">
+                <p style="font-size: 22px;">Me <i class="fa-solid fa-caret-down"></i></p>
+            </div>
+            <div class="icon d-flex flex-column justify-content-center align-items-center ">
+                <div class="dotss">
+                    <i class="fa-solid fa-ellipsis-vertical grid"></i>
+                    <i class="fa-solid fa-ellipsis-vertical grid"></i>
+                    <i class="fa-solid fa-ellipsis-vertical grid"></i>
+                </div>
+                <p style="font-size: 22px;">For Business <i class="fa-solid fa-caret-down"></i></p>
+            </div>
+            <div class="icon d-flex flex-column justify-content-center align-items-center ">
+                <img src="square.png" height="45px" alt="">
+                <p style="font-size: 22px;">Try Premium for ₹0</p>
+            </div>
+        </div>
+    </nav>
+
+    <!-- section1 -->
+    <div class="container-fluid section-1 d-flex justify-content-center align-items-center">    
+        <div class="left-1">
+            <div class="leftone">
+                <img src="card.png" class="card1"alt="">
+                <img src="me.jpeg" alt="" class="circle">
+                <h3 class="name">Manvitha Pola</h3>
+                <p class="attend">Attended Sreenidhi Institue of Science and technology</p>
+                <p class="place"style="color: grey;">Hyderabad,Telangana</p>
+                <p class="study" style="margin-right: 8px; margin-top:8px;"><img src="building.png" alt="" height="25px" style="margin-right: 8px; margin-top:3px;">  Sanskriti-the-School</p>
+            </div>
+            <div class="lefttwo">
+                <div class="d-flex display-content-center align-items-center">
+                    <p class="side1">Profile viewers</p>
+                    <p style="color: blue;">176</p>
+                </div>
+                <div class="d-flex display-content-center align-items-center">
+                    <p class="side2">Post Impressions</p>
+                    <p style="color: blue;">1,317</p>
+                </div>
+            </div>
+            <div class="leftthree d-flex flex-column justify-content-center">
+                <div class="t1">
+                    <p>Grow your career with premium</p>
+                </div>
+                <div class="t2">
+                    <img src="square.png" height="30px" alt="">
+                    <p style="font-size: 20px;">Try Premium for ₹0</p>
+                </div>
+            </div>
+            <div class="leftfour d-flex flex-column">
+                <div class="f d-flex align-items-start">
+                    <i class="fa-solid fa-bookmark ic1"></i>
+                    <p>Saved items</p>
+                </div>
+                <div class="f d-flex align-items-start">
+                    <i class="fa-solid fa-people-group ic1"></i>
+                    <p>Groups</p>
+                </div>
+                <div class="f d-flex align-items-start">
+                    <i class="fa-regular fa-calendar ic1"></i>
+                    <p>Events</p>
+                </div>
+            </div>
+        </div>
+        <div class="middle-1">
+            <div class="middleone d-flex flex-column">
+                <div class="m1 d-flex justify-content-space-around align-items-center">
+                    <img src="me.jpeg" class="me1"alt="">
+                    <button type="submit" class="btn1">Start a post</button>
+                </div>
+                <div class="opt d-flex justify-content-center">
+                  <p class="opt1"><i class="fa-solid fa-image" style="color:blue;"></i>  Media</p>
+                  <p class="opt1"><i class="fa-regular fa-calendar" style="color:rgb(219, 185, 48)"></i>  Events</p>
+                  <p><i class="fa-solid fa-newspaper" style="color:rgb(255, 123, 0)"></i>  Write article</p>
+                </div>
+            </div>
+            <div class="middletwo">
+                <div class="post">
+                    <div class="heading">
+                        <img src="profile1.png" alt="" class="profile">
+                        <div class="user-info">
+                           <h3>Navya Zitya Pottipochala</h3>
+                           <p>Student Placement Committe Member @ SNIST | Aspiring Data Analyst</p>
+                           <span>1w • <i class="fa-solid fa-earth-americas"></i></span>
+                        </div>
+                        <div class="icons d-flex ">
+                            <i class="fa-solid fa-ellipsis mx-5"></i>
+                            <i class="fa-solid fa-xmark"></i>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p>Thrilled to be selected for <strong>Internal Affairs & Hackathons</strong> in <strong>PlaceComm</strong>! 🎉 Excited to contribute and create an impact! 🚀✨</p>
+                        <p style="color: blue;"> #PlacementCommittee #Hackathons #SNIST</p>
+                    </div>
+                    <img src="post1.png" class="postimg" alt="">
+                    <div class="likes d-flex">
+                        <div class="like d-flex gap-2">
+                            <img src="like.png" alt="" >
+                            <p>You and 45 others</p>
+                        </div>
+                        <div class="comment">
+                            <p>2 Comments</p>
+                        </div>
+                    </div>
+                    <div class="actions d-flex">
+                        <div class="d-flex gap-2">
+                            <img src="like.png" height="35px"alt="">
+                            <p style="color: blue;">Like</p>
+                        </div>
+                        <p><i class="fa-regular fa-comment-dots fs-2"></i>  Comment</p>
+                        <p><i class="fa-regular fa-share-from-square fs-2"></i>  Repost</p>
+                        <p><i class="fa-solid fa-paper-plane fs-2"></i>  Send</p>
+                    </div>
+                </div>
+            </div>
+            <div class="middlethree">
+                <div class="post">
+                    <div class="heading">
+                        <img src="me.jpeg" alt="" class="profile">
+                        <div class="user-info">
+                           <h3>Manvitha Pola</h3>
+                           <p>Robotics Club | Attended Sreenidhi Institute of Science and technology</p>
+                           <span>9mo • <i class="fa-solid fa-earth-americas"></i></span>
+                        </div>
+                        <div class="icons d-flex ">
+                            <i class="fa-solid fa-ellipsis mx-5"></i>
+                            <i class="fa-solid fa-xmark"></i>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p>Attended a <strong>Generative AI</strong> workshop by <strong>Mr. Trivikrama (IIT Delhi)</strong> at <strong>Next Wave</strong>!Built an AI model & explored real-world applications. Excited for more! 🤖✨</p>
+                        <p style="color: blue;">#GenerativeAI #AI #NextWave</p>
+                    </div>
+                    <img src="post2.jpeg" class="postimg" alt="">
+                    <div class="likes d-flex">
+                        <div class="like d-flex gap-2">
+                            <img src="like.png" alt="" >
+                            <p>You and 35 others</p>
+                        </div>
+                        <div class="comment">
+                            <p>3 Comments</p>
+                        </div>
+                    </div>
+                    <div class="actions d-flex">
+                        <div class="d-flex gap-2">
+                            <img src="like.png" height="35px"alt="">
+                            <p style="color: blue;">Like</p>
+                        </div>
+                        <p><i class="fa-regular fa-comment-dots fs-2"></i>  Comment</p>
+                        <p><i class="fa-regular fa-share-from-square fs-2"></i>  Repost</p>
+                        <p><i class="fa-solid fa-paper-plane fs-2"></i>  Send</p>
+                    </div>
+                </div>
+            </div>
+            <div class="middletwo">
+                <div class="post">
+                    <div class="heading">
+                        <img src="profile1.png" alt="" class="profile">
+                        <div class="user-info">
+                           <h3>Navya Zitya Pottipochala</h3>
+                           <p>Student Placement Committe Member @ SNIST | Aspiring Data Analyst</p>
+                           <span>1w • <i class="fa-solid fa-earth-americas"></i></span>
+                        </div>
+                        <div class="icons d-flex ">
+                            <i class="fa-solid fa-ellipsis mx-5"></i>
+                            <i class="fa-solid fa-xmark"></i>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p>Thrilled to be selected for <strong>Internal Affairs & Hackathons</strong> in <strong>PlaceComm</strong>! 🎉 Excited to contribute and create an impact! 🚀✨</p>
+                        <p style="color: blue;"> #PlacementCommittee #Hackathons #SNIST</p>
+                    </div>
+                    <img src="post1.png" class="postimg" alt="">
+                    <div class="likes d-flex">
+                        <div class="like d-flex gap-2">
+                            <img src="like.png" alt="" >
+                            <p>You and 45 others</p>
+                        </div>
+                        <div class="comment">
+                            <p>2 Comments</p>
+                        </div>
+                    </div>
+                    <div class="actions d-flex">
+                        <div class="d-flex gap-2">
+                            <img src="like.png" height="35px"alt="">
+                            <p style="color: blue;">Like</p>
+                        </div>
+                        <p><i class="fa-regular fa-comment-dots fs-2"></i>  Comment</p>
+                        <p><i class="fa-regular fa-share-from-square fs-2"></i>  Repost</p>
+                        <p><i class="fa-solid fa-paper-plane fs-2"></i>  Send</p>
+                    </div>
+                </div>
+            </div>
+            <div class="middlethree">
+                <div class="post">
+                    <div class="heading">
+                        <img src="me.jpeg" alt="" class="profile">
+                        <div class="user-info">
+                           <h3>Manvitha Pola</h3>
+                           <p>Robotics Club | Attended Sreenidhi Institute of Science and technology</p>
+                           <span>9mo • <i class="fa-solid fa-earth-americas"></i></span>
+                        </div>
+                        <div class="icons d-flex ">
+                            <i class="fa-solid fa-ellipsis mx-5"></i>
+                            <i class="fa-solid fa-xmark"></i>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p>Attended a <strong>Generative AI</strong> workshop by <strong>Mr. Trivikrama (IIT Delhi)</strong> at <strong>Next Wave</strong>!Built an AI model & explored real-world applications. Excited for more! 🤖✨</p>
+                        <p style="color: blue;">#GenerativeAI #AI #NextWave</p>
+                    </div>
+                    <img src="post2.jpeg" class="postimg" alt="">
+                    <div class="likes d-flex">
+                        <div class="like d-flex gap-2">
+                            <img src="like.png" alt="" >
+                            <p>You and 35 others</p>
+                        </div>
+                        <div class="comment">
+                            <p>3 Comments</p>
+                        </div>
+                    </div>
+                    <div class="actions d-flex">
+                        <div class="d-flex gap-2">
+                            <img src="like.png" height="35px"alt="">
+                            <p style="color: blue;">Like</p>
+                        </div>
+                        <p><i class="fa-regular fa-comment-dots fs-2"></i>  Comment</p>
+                        <p><i class="fa-regular fa-share-from-square fs-2"></i>  Repost</p>
+                        <p><i class="fa-solid fa-paper-plane fs-2"></i>  Send</p>
+                    </div>
+                </div>
+            </div> 
+            <div class="middlefour"></div>
+        </div>
+        <div class="right-1">
+            <div class="rightone">
+                <div class="r1 d-flex">
+                    <h2>Trending Now</h2>
+                    <img src="i.png" height="18px" alt="">
+                </div>
+                <p style="font-size:27px; color:grey;">curated by LinkedIn News</p>
+                <ul class="list">
+                    <li><strong>Large layoffs hit Starbucks</strong><br><span>7h ago • 53,972 readers</span></li>
+                    <li><strong>High-profit GCCs on the rise</strong><br><span>13h ago • 2,552 readers</span></li>
+                    <li><strong>VC firms eye agentic AI startups</strong><br><span>13h ago • 1,777 readers</span></li>
+                    <li><strong>Indian firms embrace DEI efforts</strong><br><span>13h ago • 1,039 readers</span></li>
+                    <li><strong>Gold loans shine brighter</strong><br><span>14h ago • 680 readers</span></li>
+                </ul>
+                <h3 style="color: grey;">Today's puzzles</h3>
+                <div clas="puzzles">
+                    <div class="puzzle">
+                        <img src="tango.svg" alt="Tango">
+                        <div class="info">
+                            <strong>Tango</strong><br><span>11 connections played</span>
+                        </div>
+                        <span class="arrow">›</span>
+                    </div>
+                    <div class="puzzle">
+                        <img src="queens.svg" alt="">
+                        <div class="info">
+                            <strong>Queens</strong><br><span>14 connections played</span>
+                        </div>
+                        <span class="arrow">›</span>
+                    </div>
+                    <div class="puzzle">
+                        <img src="pinpoint.svg" alt="">
+                        <div class="info">
+                            <strong>Pinpoint</strong><br><span>7 connections played</span>
+                        </div>
+                        <span class="arrow">›</span>
+                    </div>
+                    <div class="puzzle">
+                        <img src="crossclimb.svg" alt="Tango">
+                        <div class="info">
+                            <strong>Croosclimb</strong><br><span>5 connections played</span>
+                        </div>
+                        <span class="arrow">›</span>
+                    </div>
+                </div>
+            </div>
+            <div class="righttwo1">
+                <div class="righttwo">
+                    <img src="back.jpeg" class="back"alt="">
+                    <img src="aaramco.jpeg" alt="" class="square">
+                    <br><strong style="font-size:25px;" class="rt1">aramco</strong>
+                    <p class="rt2">Manvitha, grow your career by following aramco</span>
+                    <p class="rt3">Visit the company page for aramco!</p>
+                    <button type="submit" class="button">Follow</button>
+                </div>
+                <div class="rightthree d-flex justify-content-center align=items-center gap-2">
+                    <img src="tip.png" height="30px" alt="">
+                    <h4 style="font-size:19px; color:grey; ">Try LinkedIn on the Windows app</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
